@@ -2,7 +2,7 @@
 
 A practical adapter-based architecture for turning logs, endpoint events, SDLC signals, and AI agent traces into explainable security graphs.
 
-**Blog post:** [The Graph Isn't Enough](https://2amsecurity.substack.com)
+**Blog post:** [The Graph Isn't Enough](https://srajangupta.substack.com)
 
 ## Architecture
 
