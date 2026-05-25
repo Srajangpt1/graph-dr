@@ -18,7 +18,6 @@ from core import run_adapter
 from adapters.saas import parse_saas, SaaSHeuristics, saas_test_events, SAAS_RULES
 from adapters.macos import parse_macos, MacOSHeuristics, macos_test_events, MACOS_RULES
 from adapters.agent import parse_agent, AgentHeuristics, agent_test_events, AGENT_RULES
-from adapters.appsec import parse_appsec, AppSecHeuristics, appsec_test_events, APPSEC_RULES
 
 
 ADAPTERS = {
@@ -33,10 +32,6 @@ ADAPTERS = {
     "agent": (
         "Multi-Agent: Prompt injection via MCP",
         agent_test_events, parse_agent, AgentHeuristics, AGENT_RULES,
-    ),
-    "appsec": (
-        "AppSec: SQLi + secret shipped to prod",
-        appsec_test_events, parse_appsec, AppSecHeuristics, APPSEC_RULES,
     ),
 }
 

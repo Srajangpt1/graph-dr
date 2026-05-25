@@ -7,12 +7,12 @@ A practical adapter-based architecture for turning logs, endpoint events, SDLC s
 ## Architecture
 
 ```
-┌──────────────┐  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐
-│  SaaS Logs   │  │ macOS eslog  │  │  AppSec /    │  │ Agent/MCP    │
-│  (JSONL)     │  │ (JSON)       │  │  CI/CD       │  │ Telemetry    │
-└──────┬───────┘  └──────┬───────┘  └──────┬───────┘  └──────┬───────┘
-       │                 │                 │                 │
-       ▼                 ▼                 ▼                 ▼
+┌──────────────┐  ┌──────────────┐  ┌──────────────┐
+│  SaaS Logs   │  │ macOS eslog  │  │ Agent/MCP    │
+│  (JSONL)     │  │ (JSON)       │  │ Telemetry    │
+└──────┬───────┘  └──────┬───────┘  └──────┬───────┘
+       │                 │                 │
+       ▼                 ▼                 ▼
 ┌──────────────────────────────────────────────────────────────────┐
 │                        ADAPTER LAYER                             │
 │      Entity model + Parser + Heuristics (per source)            │
@@ -55,7 +55,6 @@ python main.py saas macos   # SaaS + macOS
 | **SaaS** | User, Session, IP, APICall, Resource | Insider threat via Tor | Tor+sensitive access, bulk data access, priv escalation chain |
 | **macOS** | Process, File, Network | Infostealer (FreeVPN.app) | osascript chains, LaunchAgent persistence, credential access, exfil pattern |
 | **Multi-Agent** | Agent, ToolCall, MCPServer, Resource, Prompt | Prompt injection via MCP | Injection→sensitive, cross-agent escalation, multi-server lateral, exfil via tool |
-| **AppSec** | Repo, Commit, PR, Pipeline, Finding, Dependency, Deploy | SQLi + secret shipped to prod | Critical finding in prod, pipeline bypass, secret in commit, vuln dependency, unreviewed PR |
 
 ## Project Structure
 
@@ -67,8 +66,7 @@ graph-dr/
 ├── adapters/
 │   ├── saas.py             # SaaS application logs adapter
 │   ├── macos.py            # macOS Endpoint Security adapter
-│   ├── agent.py            # Multi-agent / MCP adapter
-│   └── appsec.py           # AppSec / CI/CD adapter
+│   └── agent.py            # Multi-agent / MCP adapter
 └── README.md
 ```
 
